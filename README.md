@@ -1,6 +1,6 @@
 # Hanged Man Game
 
-![](hm_screenshot.jpg)
+![](https://github.com/EricEricEricJin/Hanged-Man-Game/blob/master/hm_screenshot.jpg)
 
 ## Running environmemnt
 UNIX / LINUX
