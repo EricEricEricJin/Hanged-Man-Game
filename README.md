@@ -1,4 +1,7 @@
 # Hanged Man Game
+
+![](hm_screenshot.jpg)
+
 ## Running environmemnt
 UNIX / LINUX
 
