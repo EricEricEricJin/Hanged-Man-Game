@@ -1,0 +1,142 @@
+PROC draw_man()
+    IF stroke == 0 THEN
+        OUTPUT 
+            "
+                
+
+                
+
+
+
+                
+            "
+
+    ELIF stroke == 1 THEN
+        OUTPUT 
+            "
+                
+
+
+
+
+                
+
+                ********
+            "
+
+    ELIF stroke == 2 THEN
+        OUTPUT 
+            "
+                *
+                *
+                *
+                *
+                *
+                *
+                *
+                ********
+            "
+
+    ELIF stroke == 3 THEN
+        OUTPUT 
+            "
+                *****
+                *
+                *
+                *
+                *
+                *
+                *
+                ********
+            "
+
+    ELIF stroke == 4 THEN
+        OUTPUT 
+            "
+                *****
+                *   *
+                *
+                *
+                *
+                *
+                *
+                ********
+            "
+
+    ELIF stroke == 5 THEN
+        OUTPUT 
+            "
+                *****
+                *   *
+                *  * *
+                *   *
+                *
+                *
+                *
+                ********
+            "
+
+    ELIF stroke == 6 THEN
+        OUTPUT 
+            "
+                *****
+                *   *
+                *  * *
+                *   *
+                *   *
+                *   *
+                *
+                ********
+            "
+    ELIF stroke == 7 THEN
+        OUTPUT
+            "
+                *****
+                *   *
+                *  * *
+                *   *
+                *  **
+                *   *
+                *
+                ********
+            "
+    ELIF stroke == 8 THEN
+        OUTPUT
+            "
+                *****
+                *   *
+                *  * *
+                *   *
+                *  ***
+                *   *
+                *
+                ********
+            "
+
+    ELIF stroke == 9 THEN
+        OUTPUT
+            "
+                *****
+                *   *
+                *  * *
+                *   *
+                *  ***
+                *   *
+                *  *
+                ********
+            "   
+
+    ELIF stroke == 10 THEN
+        OUTPUT
+            "
+                *****
+                *   *
+                *  * *
+                *   *
+                *  ***
+                *   *
+                *  * *
+                ********
+            "    
+    ENDIF
+ENDPROC

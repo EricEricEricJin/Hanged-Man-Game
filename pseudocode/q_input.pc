@@ -1,0 +1,5 @@
+PROC q_input()
+    INPUT hardness "Please input the hardness"
+    INPUT word "Please input the guessing word"
+    INPUT hint "Please input the hint"
+ENDPROC

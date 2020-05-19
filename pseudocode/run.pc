@@ -1,0 +1,9 @@
+PROC run()
+    q_input()
+    stroke <- hardness - 1
+    IF a_input() = 1 THEN
+        OUTPUT "YOU WIN"
+    ELSE
+        OUTPUT "YOU DIE"
+    ENDIF
+ENDPROC

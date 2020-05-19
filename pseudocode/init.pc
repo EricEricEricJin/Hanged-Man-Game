@@ -1,0 +1,13 @@
+PROC initialize ()
+    DECLARE word: STRING
+    DECLARE hint: STRING
+    DECLARE hardness: INTEGER
+    DECLARE stroke: INTEGER
+    DECLARE answer: STRING
+    
+    word <- ""
+    hint <- ""
+    hardness <- 0
+    stroke <- 0
+    answer <- "
+ENDPROC

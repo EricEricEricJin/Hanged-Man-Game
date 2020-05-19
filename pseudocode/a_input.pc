@@ -1,0 +1,29 @@
+PROC a_input()
+    DECLEAR key: CHARACTER
+    DECLEAR i: INTEGER
+    DECLEAR has_correct: BOOLEN
+    key <- ""
+
+    WHILE
+        INPUT key
+        has_correct <- 0
+        FOR i <- 0 TO word.LENGTH
+            IF word[i] = key THEN
+                answer[i] <- key
+                has_correct <- 1
+            ENDIF
+        ENDFOR
+        OUTPUT answer
+        IF has_correct = 0 THEN
+            stroke <- stroke + 1
+            draw_man(stroke)
+            IF stroke >= LIVES THEN
+                // loose
+                RETURN 0;
+            ENDIF
+        ELIF answer = word THEN
+            // win
+            RETURN 1;
+        ENDIF
+    ENDWHILE
+ENDPROC
