@@ -2,6 +2,7 @@
 _By DP1-1 Rifile, Eric, Noel, Leo_
 
 - [Hanged Man Game](#hanged-man-game)
+  - [Introduction](#introduction)
   - [Structure](#structure)
   - [Flowchart](#flowchart)
       - [main](#main)
@@ -31,10 +32,32 @@ _By DP1-1 Rifile, Eric, Noel, Leo_
       - [del.cpp](#delcpp)
       - [init_free_str.cpp](#initfreestrcpp)
       - [strcomp.cpp](#strcompcpp)
+  - [Testing](#testing)
+      - [Player 1 input hardness, word, and hint](#player-1-input-hardness-word-and-hint)
+      - [Player 2 input answer](#player-2-input-answer)
+      - [Player 2 pass away](#player-2-pass-away)
+      - [Quit or restart](#quit-or-restart)
+      - [Player 2 survive](#player-2-survive)
 
+
+## Introduction
+Hanged Man is a game. One player enter the hardness, word, and hint, another player try characters and if the character he / she input is in the word, all same characters in the word would appear; if the character is NOT in the word, a stroke is added to a hanged man. When all the characters are tried out, player 2 win; when the hanged man are completely drawn, player 2 die.
+
+In our design, we set the relationship of hardness and uncomplete stroke as:
+| Hardness | # Uncomplete strokes |
+| --- | --- |
+| SIMPLE | 10 |
+| MIDDLE | 9 |
+| HARD | 8 |
+
+We set the maximum number of characters of word is 20  
+We set the maximum number of characters of hint is 100
+
+All the works of this project are uploaded to github repository [https://github.com/EricEricEricJin/Hanged-Man-Game.git](https://github.com/EricEricEricJin/Hanged-Man-Game.git)
 
 ## Structure
-![structure_diagram](structure_diagram.png)
+We used top-down design in our project. Here's the structure chart.
+![structure_diagram](structure.png)
 <!--Change to draw.io version later-->
 
 ## Flowchart
@@ -903,3 +926,27 @@ int hangedMan::strcomp(char* s1, char* s2, int len) {
     return same;
 }
 ```
+
+## Testing
+
+We compile the C++ program with makefile
+```makefile
+main:
+	g++ -o hanged_man.out main.cpp init.cpp run.cpp draw_man.cpp a_input.cpp q_input.cpp strcomp.cpp die.cpp win.cpp del.cpp rst_input.cpp init_free_str.cpp -l curses
+```
+in Mac OS X 10.15 with g++ version 4.2.1 and curses lib installed. We run it in terminal window of size 80 cols 24 rows.
+
+#### Player 1 input hardness, word, and hint
+![](test_1.jpg)
+
+#### Player 2 input answer
+![](test_2.jpg)
+
+#### Player 2 pass away
+![](test_3.jpg)
+
+#### Quit or restart
+![](test_4.jpg)
+
+#### Player 2 survive
+![](test_5.jpg)

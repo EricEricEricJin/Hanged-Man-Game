@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Hanged Man Game</title>
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+        
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        <style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        
+        
+    </head>
+    <body class="vscode-light">
+        <h1 id="hanged-man-game">Hanged Man Game</h1>
+<p><em>By DP1-1 Rifile, Eric, Noel, Leo</em></p>
+<ul>
+<li><a href="#hanged-man-game">Hanged Man Game</a>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#structure">Structure</a></li>
+<li><a href="#flowchart">Flowchart</a>
+<ul>
+<li><a href="#main">main</a></li>
+<li><a href="#init">init</a></li>
+<li><a href="#run">run</a></li>
+<li><a href="#qinput">q_input</a></li>
+<li><a href="#ainput">a_input</a></li>
+<li><a href="#drawman">draw_man</a></li>
+</ul>
+</li>
+<li><a href="#pseudocode">Pseudocode</a>
+<ul>
+<li><a href="#main-1">main</a></li>
+<li><a href="#init-1">init</a></li>
+<li><a href="#run-1">run</a></li>
+<li><a href="#qinput-1">q_input</a></li>
+<li><a href="#ainput-1">a_input</a></li>
+<li><a href="#drawman-1">draw_man</a></li>
+</ul>
+</li>
+<li><a href="#c-implementation">C++ implementation</a>
+<ul>
+<li><a href="#hangedmanh">hanged_man.h</a></li>
+<li><a href="#maincpp">main.cpp</a></li>
+<li><a href="#initcpp">init.cpp</a></li>
+<li><a href="#runcpp">run.cpp</a></li>
+<li><a href="#ainputcpp">a_input.cpp</a></li>
+<li><a href="#qinputcpp">q_input.cpp</a></li>
+<li><a href="#rstinputcpp">rst_input.cpp</a></li>
+<li><a href="#drawmancpp">draw_man.cpp</a></li>
+<li><a href="#wincpp">win.cpp</a></li>
+<li><a href="#diecpp">die.cpp</a></li>
+<li><a href="#delcpp">del.cpp</a></li>
+<li><a href="#initfreestrcpp">init_free_str.cpp</a></li>
+<li><a href="#strcompcpp">strcomp.cpp</a></li>
+</ul>
+</li>
+<li><a href="#testing">Testing</a>
+<ul>
+<li><a href="#player-1-input-hardness-word-and-hint">Player 1 input hardness, word, and hint</a></li>
+<li><a href="#player-2-input-answer">Player 2 input answer</a></li>
+<li><a href="#player-2-pass-away">Player 2 pass away</a></li>
+<li><a href="#quit-or-restart">Quit or restart</a></li>
+<li><a href="#player-2-survive">Player 2 survive</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="introduction">Introduction</h2>
+<p>Hanged Man is a game. One player enter the hardness, word, and hint, another player try characters and if the character he / she input is in the word, all same characters in the word would appear; if the character is NOT in the word, a stroke is added to a hanged man. When all the characters are tried out, player 2 win; when the hanged man are completely drawn, player 2 die.</p>
+<p>In our design, we set the relationship of hardness and uncomplete stroke as:</p>
+<table>
+<thead>
+<tr>
+<th>Hardness</th>
+<th># Uncomplete strokes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SIMPLE</td>
+<td>10</td>
+</tr>
+<tr>
+<td>MIDDLE</td>
+<td>9</td>
+</tr>
+<tr>
+<td>HARD</td>
+<td>8</td>
+</tr>
+</tbody>
+</table>
+<h2 id="structure">Structure</h2>
+<p>We used top-down design in our project. Here's the structure chart.
+<img src="file:////Users/eric/Documents/IB_inSchool/IB_CS/HL/hanged_man/structure.png" alt="structure_diagram"></p>
+<!--Change to draw.io version later-->
+<h2 id="flowchart">Flowchart</h2>
+<h4 id="main">main</h4>
+<h4 id="init">init</h4>
+<h4 id="run">run</h4>
+<h4 id="qinput">q_input</h4>
+<h4 id="ainput">a_input</h4>
+<h4 id="drawman">draw_man</h4>
+<h2 id="pseudocode">Pseudocode</h2>
+<h4 id="main-1">main</h4>
+<pre><code><code><div>initialize()
+run()
+</div></code></code></pre>
+<h4 id="init-1">init</h4>
+<pre><code><code><div>PROC initialize ()
+    DECLARE word: STRING
+    DECLARE hint: STRING
+    DECLARE hardness: INTEGER
+    DECLARE stroke: INTEGER
+    DECLARE answer: STRING
+    
+    word &lt;- &quot;&quot;
+    hint &lt;- &quot;&quot;
+    hardness &lt;- 0
+    stroke &lt;- 0
+    answer &lt;- &quot;
+ENDPROC
+</div></code></code></pre>
+<h4 id="run-1">run</h4>
+<pre><code><code><div>PROC run()
+    q_input()
+    stroke &lt;- hardness - 1
+    IF a_input() = 1 THEN
+        OUTPUT &quot;YOU WIN&quot;
+    ELSE
+        OUTPUT &quot;YOU DIE&quot;
+    ENDIF
+ENDPROC
+</div></code></code></pre>
+<h4 id="qinput-1">q_input</h4>
+<pre><code><code><div>PROC q_input()
+    INPUT hardness &quot;Please input the hardness&quot;
+    INPUT word &quot;Please input the guessing word&quot;
+    INPUT hint &quot;Please input the hint&quot;
+ENDPROC
+</div></code></code></pre>
+<h4 id="ainput-1">a_input</h4>
+<pre><code><code><div>PROC a_input()
+    DECLEAR key: CHARACTER
+    DECLEAR i: INTEGER
+    DECLEAR has_correct: BOOLEN
+    key &lt;- &quot;&quot;
+
+    WHILE
+        INPUT key
+        has_correct &lt;- 0
+        FOR i &lt;- 0 TO word.LENGTH
+            IF word[i] = key THEN
+                answer[i] &lt;- key
+                has_correct &lt;- 1
+            ENDIF
+        ENDFOR
+        OUTPUT answer
+        IF has_correct = 0 THEN
+            stroke &lt;- stroke + 1
+            draw_man(stroke)
+            IF stroke &gt;= LIVES THEN
+                // loose
+                RETURN 0;
+            ENDIF
+        ELIF answer = word THEN
+            // win
+            RETURN 1;
+        ENDIF
+    ENDWHILE
+ENDPROC
+</div></code></code></pre>
+<h4 id="drawman-1">draw_man</h4>
+<pre><code><code><div>PROC draw_man()
+    IF stroke == 0 THEN
+        OUTPUT 
+            &quot;
+                
+
+                
+
+
+
+                
+            &quot;
+
+    ELIF stroke == 1 THEN
+        OUTPUT 
+            &quot;
+                
+
+
+
+
+                
+
+                ********
+            &quot;
+
+    ELIF stroke == 2 THEN
+        OUTPUT 
+            &quot;
+                *
+                *
+                *
+                *
+                *
+                *
+                *
+                ********
+            &quot;
+
+    ELIF stroke == 3 THEN
+        OUTPUT 
+            &quot;
+                *****
+                *
+                *
+                *
+                *
+                *
+                *
+                ********
+            &quot;
+
+    ELIF stroke == 4 THEN
+        OUTPUT 
+            &quot;
+                *****
+                *   *
+                *
+                *
+                *
+                *
+                *
+                ********
+            &quot;
+
+    ELIF stroke == 5 THEN
+        OUTPUT 
+            &quot;
+                *****
+                *   *
+                *  * *
+                *   *
+                *
+                *
+                *
+                ********
+            &quot;
+
+    ELIF stroke == 6 THEN
+        OUTPUT 
+            &quot;
+                *****
+                *   *
+                *  * *
+                *   *
+                *   *
+                *   *
+                *
+                ********
+            &quot;
+    ELIF stroke == 7 THEN
+        OUTPUT
+            &quot;
+                *****
+                *   *
+                *  * *
+                *   *
+                *  **
+                *   *
+                *
+                ********
+            &quot;
+    ELIF stroke == 8 THEN
+        OUTPUT
+            &quot;
+                *****
+                *   *
+                *  * *
+                *   *
+                *  ***
+                *   *
+                *
+                ********
+            &quot;
+
+    ELIF stroke == 9 THEN
+        OUTPUT
+            &quot;
+                *****
+                *   *
+                *  * *
+                *   *
+                *  ***
+                *   *
+                *  *
+                ********
+            &quot;   
+
+    ELIF stroke == 10 THEN
+        OUTPUT
+            &quot;
+                *****
+                *   *
+                *  * *
+                *   *
+                *  ***
+                *   *
+                *  * *
+                ********
+            &quot;    
+    ENDIF
+ENDPROC
+</div></code></code></pre>
+<h2 id="c-implementation">C++ implementation</h2>
+<h4 id="hangedmanh">hanged_man.h</h4>
+<pre><code class="language-cpp"><div><span class="hljs-meta">#<span class="hljs-meta-keyword">ifndef</span> _H_M__</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> _H_M__</span>
+
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> WINDOW_H 24</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> WINDOW_W 80</span>
+
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> WORD_MAX_LEN 20</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> HINT_MAX_LEN 100</span>
+
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> LIVES 10</span>
+
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdio&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdlib&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;curses.h&gt;</span></span>
+
+<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">string</span> {</span>
+    <span class="hljs-keyword">char</span>* text;
+    <span class="hljs-keyword">int</span> len;
+};
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">hangedMan</span> {</span>
+    <span class="hljs-keyword">private</span>:
+        WINDOW* main_win;
+        WINDOW* man_win;
+        WINDOW* IO_win;
+
+        <span class="hljs-keyword">int</span> q_input_stage;
+        <span class="hljs-keyword">int</span> hardness;
+        <span class="hljs-built_in">string</span>* hint;
+        <span class="hljs-built_in">string</span>* word;
+        <span class="hljs-built_in">string</span>* answer;
+
+        <span class="hljs-keyword">int</span> stroke;
+
+        
+        <span class="hljs-keyword">int</span> restart;
+
+        <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">draw_man</span><span class="hljs-params">()</span></span>;
+        <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">q_input</span><span class="hljs-params">(<span class="hljs-keyword">int</span> key_val)</span></span>;
+        <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">a_input</span><span class="hljs-params">(<span class="hljs-keyword">int</span> key_val)</span></span>;
+        <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">strcomp</span><span class="hljs-params">(<span class="hljs-keyword">char</span>* s1, <span class="hljs-keyword">char</span>* s2, <span class="hljs-keyword">int</span> len)</span></span>;
+        <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">die</span><span class="hljs-params">()</span></span>;
+        <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">win</span><span class="hljs-params">()</span></span>;
+        <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">del</span><span class="hljs-params">()</span></span>;
+        <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">rst_input</span><span class="hljs-params">(<span class="hljs-keyword">int</span> key_val)</span></span>;
+        <span class="hljs-function"><span class="hljs-built_in">string</span>* <span class="hljs-title">init_str</span><span class="hljs-params">(<span class="hljs-keyword">int</span> len, <span class="hljs-keyword">char</span> chr)</span></span>;
+        <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">free_str</span><span class="hljs-params">(<span class="hljs-built_in">string</span>* str)</span></span>;
+
+    <span class="hljs-keyword">public</span>:
+        hangedMan();
+        <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span></span>;
+
+};
+<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span>
+</div></code></pre>
+<h4 id="maincpp">main.cpp</h4>
+<pre><code class="language-cpp"><div><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">"hanged_man.h"</span></span>
+
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+    hangedMan H;
+    H.run();
+}
+</div></code></pre>
+<h4 id="initcpp">init.cpp</h4>
+<pre><code class="language-cpp"><div><span class="hljs-comment">/**
+ * Function: init
+ * Description: initialize as the class is instantiated
+ * Parameter: None
+ * Return: None
+*/</span>
+
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">"hanged_man.h"</span></span>
+
+hangedMan::hangedMan() {
+    main_win = initscr();
+    man_win = subwin(main_win, LINES, <span class="hljs-keyword">int</span>(COLS / <span class="hljs-number">2</span>), <span class="hljs-number">0</span>, <span class="hljs-keyword">int</span>(COLS / <span class="hljs-number">2</span>));
+    IO_win = subwin(main_win, LINES, <span class="hljs-keyword">int</span>(COLS / <span class="hljs-number">2</span>), <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);
+    <span class="hljs-comment">// cbreak();</span>
+    noecho();
+}
+</div></code></pre>
+<h4 id="runcpp">run.cpp</h4>
+<pre><code class="language-cpp"><div><span class="hljs-comment">/**
+ * Function: run
+ * Description: the main loop of the game
+ * Parameter: None
+ * Return: None
+*/</span>
+
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">"hanged_man.h"</span></span>
+
+<span class="hljs-keyword">void</span> hangedMan::run() {
+    word = init_str(WORD_MAX_LEN, <span class="hljs-number">0</span>);
+    hint = init_str(HINT_MAX_LEN, <span class="hljs-number">0</span>);
+    q_input_stage = <span class="hljs-number">0</span>;
+    hardness = <span class="hljs-number">0</span>;
+    stroke = <span class="hljs-number">0</span>;
+    restart = <span class="hljs-number">0</span>;
+    
+    wclear(main_win);
+    wclear(man_win);
+    wclear(IO_win);
+
+    box(main_win, ACS_VLINE, ACS_HLINE);
+
+    <span class="hljs-keyword">int</span> key_val = <span class="hljs-number">0</span>;
+    q_input_stage = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">while</span> (<span class="hljs-number">1</span>) {
+        
+        <span class="hljs-keyword">if</span> (q_input(key_val) == <span class="hljs-number">1</span>) {
+            <span class="hljs-keyword">break</span>;
+        }
+        key_val = getch();
+    }
+    
+    wclear(main_win);
+    box(main_win, ACS_VLINE, ACS_HLINE);
+    box(man_win, ACS_VLINE, ACS_HLINE);
+    box(IO_win, ACS_VLINE, ACS_HLINE);
+
+    stroke += hardness - <span class="hljs-number">1</span>;
+    answer = init_str(word -&gt; len, <span class="hljs-number">95</span>);
+
+    wprintw(IO_win, answer -&gt; text);
+    key_val = <span class="hljs-number">0</span>;
+
+    <span class="hljs-keyword">int</span> brk = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">while</span> (<span class="hljs-number">1</span>) {
+        <span class="hljs-keyword">if</span> (brk == <span class="hljs-number">1</span>) {
+            <span class="hljs-keyword">break</span>;
+        }
+        <span class="hljs-keyword">switch</span> (a_input(key_val)) {
+            <span class="hljs-keyword">case</span> <span class="hljs-number">1</span>:
+                win();
+                brk = <span class="hljs-number">1</span>;
+                <span class="hljs-keyword">break</span>;
+            <span class="hljs-keyword">case</span> <span class="hljs-number">-1</span>:
+                brk = <span class="hljs-number">1</span>;
+                die();
+                <span class="hljs-keyword">break</span>;
+            <span class="hljs-keyword">default</span>:
+                key_val = getch();
+                <span class="hljs-keyword">break</span>;
+        }
+    }
+
+    <span class="hljs-comment">// restart or quit</span>
+    getch();
+    key_val = <span class="hljs-number">0</span>;
+    restart = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">while</span> (<span class="hljs-number">1</span>) {
+        <span class="hljs-keyword">if</span> (rst_input(key_val) == <span class="hljs-number">1</span>) {
+            <span class="hljs-keyword">if</span> (restart == <span class="hljs-number">0</span>) {
+                del();
+            } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (restart == <span class="hljs-number">1</span>) {
+                del();
+                run();
+            }
+            <span class="hljs-keyword">break</span>;
+        }
+        key_val = getch();
+    }
+}
+</div></code></pre>
+<h4 id="ainputcpp">a_input.cpp</h4>
+<pre><code class="language-cpp"><div><span class="hljs-comment">/**
+ * Function: a_input
+ * Description: the player input the answer
+ * Parameter: key_val
+ * Return: die(-1) or win(1) or unfinished(0)
+*/</span>
+
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">"hanged_man.h"</span></span>
+
+<span class="hljs-keyword">int</span> hangedMan::a_input(<span class="hljs-keyword">int</span> key_val) {
+    <span class="hljs-keyword">if</span> (key_val != <span class="hljs-number">0</span>) {
+        <span class="hljs-keyword">int</span> hasCorrect = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; word -&gt; len; i++) {
+            <span class="hljs-keyword">if</span> (*(word -&gt; text + i) == key_val) {
+                hasCorrect = <span class="hljs-number">1</span>;
+                *(answer -&gt; text + i) = key_val;
+            }
+        }
+        
+        <span class="hljs-keyword">if</span> (hasCorrect == <span class="hljs-number">0</span>) {
+            stroke += <span class="hljs-number">1</span>;
+        }
+    }
+    wclear(IO_win);
+    box(IO_win, ACS_VLINE, ACS_HLINE);
+    wmove(IO_win, <span class="hljs-keyword">int</span>(LINES / <span class="hljs-number">2</span>), <span class="hljs-number">5</span>);
+    wprintw(IO_win, answer -&gt; text);
+    wmove(IO_win, <span class="hljs-keyword">int</span>(LINES / <span class="hljs-number">2</span>) + <span class="hljs-number">2</span>, <span class="hljs-number">5</span>);
+    wprintw(IO_win, <span class="hljs-string">"Hint:"</span>);
+    wmove(IO_win, <span class="hljs-keyword">int</span>(LINES / <span class="hljs-number">2</span>) + <span class="hljs-number">3</span>, <span class="hljs-number">5</span>);
+    wprintw(IO_win, hint -&gt; text);
+    wrefresh(IO_win);
+    draw_man();
+    
+    <span class="hljs-keyword">if</span> (stroke &gt;= <span class="hljs-number">10</span>) {
+        <span class="hljs-comment">// dead</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;
+    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (strcomp(answer -&gt; text, word -&gt; text, word -&gt; len) == <span class="hljs-number">1</span>) {
+        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</div></code></pre>
+<h4 id="qinputcpp">q_input.cpp</h4>
+<pre><code class="language-cpp"><div><span class="hljs-comment">/**
+ * Function: q_input
+ * Description: input of question
+ * Parameter: key_val
+ * Return: 0 not decide or 1 decided
+*/</span>
+
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">"hanged_man.h"</span></span>
+
+<span class="hljs-keyword">int</span> hangedMan::q_input(<span class="hljs-keyword">int</span> key_val) {
+    wclear(main_win);
+    box(main_win, ACS_VLINE, ACS_HLINE);
+    <span class="hljs-keyword">if</span> (key_val == <span class="hljs-number">9</span>) {
+        q_input_stage += <span class="hljs-number">1</span>;
+        <span class="hljs-keyword">if</span> (q_input_stage &gt; <span class="hljs-number">3</span>) {
+            q_input_stage = <span class="hljs-number">0</span>;
+        }
+    } <span class="hljs-keyword">else</span> {
+        <span class="hljs-keyword">switch</span> (q_input_stage) {
+            <span class="hljs-keyword">case</span> <span class="hljs-number">0</span>: <span class="hljs-comment">// hardness</span>
+                <span class="hljs-keyword">switch</span> (key_val) {
+                    <span class="hljs-keyword">case</span> <span class="hljs-number">49</span>:
+                        hardness = <span class="hljs-number">1</span>;
+                        <span class="hljs-keyword">break</span>;
+                    <span class="hljs-keyword">case</span> <span class="hljs-number">50</span>:
+                        hardness = <span class="hljs-number">2</span>;
+                        <span class="hljs-keyword">break</span>;
+                    <span class="hljs-keyword">case</span> <span class="hljs-number">51</span>:
+                        hardness = <span class="hljs-number">3</span>;
+                        <span class="hljs-keyword">break</span>;
+                }
+                <span class="hljs-keyword">break</span>;
+            
+            <span class="hljs-keyword">case</span> <span class="hljs-number">1</span>: <span class="hljs-comment">// word</span>
+                <span class="hljs-keyword">if</span> (key_val &gt;= <span class="hljs-number">97</span> &amp;&amp; key_val &lt;= <span class="hljs-number">122</span>) {
+                    <span class="hljs-keyword">if</span> (word -&gt; len &lt; WORD_MAX_LEN) {
+                        *(word -&gt; text + word -&gt; len) = key_val;
+                        word -&gt; len += <span class="hljs-number">1</span>;
+                    }
+                } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (key_val == <span class="hljs-number">127</span>) { <span class="hljs-comment">// delete</span>
+                    <span class="hljs-keyword">if</span> (word -&gt; len &gt; <span class="hljs-number">0</span>) {
+                        *(word -&gt; text + word -&gt; len - <span class="hljs-number">1</span>) = <span class="hljs-number">0</span>;
+                        word -&gt; len -= <span class="hljs-number">1</span>;
+                    }
+                }
+                <span class="hljs-keyword">break</span>;
+
+            <span class="hljs-keyword">case</span> <span class="hljs-number">2</span>: <span class="hljs-comment">// Hint</span>
+                <span class="hljs-keyword">if</span> (key_val &gt;= <span class="hljs-number">97</span> &amp;&amp; key_val &lt;= <span class="hljs-number">122</span>) {
+                    <span class="hljs-keyword">if</span> (hint -&gt; len &lt; HINT_MAX_LEN) {
+                        *(hint -&gt; text + hint -&gt; len) = key_val;
+                        hint -&gt; len += <span class="hljs-number">1</span>;
+                    }
+                } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (key_val == <span class="hljs-number">127</span>) { <span class="hljs-comment">// delete</span>
+                    <span class="hljs-keyword">if</span> (hint -&gt; len &gt; <span class="hljs-number">0</span>) {
+                        *(hint -&gt; text + hint -&gt; len - <span class="hljs-number">1</span>) = <span class="hljs-number">0</span>;
+                        hint -&gt; len -= <span class="hljs-number">1</span>;
+                    }
+                }
+                <span class="hljs-keyword">break</span>;
+
+            <span class="hljs-keyword">case</span> <span class="hljs-number">3</span>:
+                <span class="hljs-keyword">if</span> (key_val == <span class="hljs-number">10</span>) {
+                    <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+                }
+
+            <span class="hljs-keyword">default</span>:
+                <span class="hljs-keyword">break</span>;
+        }
+    }
+
+    <span class="hljs-comment">// show</span>
+    wmove(main_win, <span class="hljs-number">1</span>, <span class="hljs-number">10</span>);
+    wprintw(main_win, <span class="hljs-string">"Hardness"</span>);
+
+    wmove(main_win, <span class="hljs-number">2</span>, <span class="hljs-number">10</span>);
+    <span class="hljs-keyword">switch</span> (hardness) {
+        <span class="hljs-keyword">case</span> <span class="hljs-number">1</span>:
+            wprintw(main_win, <span class="hljs-string">"SIMPLE"</span>);
+            <span class="hljs-keyword">break</span>;
+        <span class="hljs-keyword">case</span> <span class="hljs-number">2</span>:
+            wprintw(main_win, <span class="hljs-string">"MIDDLE"</span>);
+            <span class="hljs-keyword">break</span>;
+        <span class="hljs-keyword">case</span> <span class="hljs-number">3</span>:
+            wprintw(main_win, <span class="hljs-string">"HARD"</span>);
+            <span class="hljs-keyword">break</span>;
+        <span class="hljs-keyword">default</span>:
+            <span class="hljs-keyword">break</span>;
+    }
+    
+    wmove(main_win, <span class="hljs-number">3</span>, <span class="hljs-number">10</span>);
+    wprintw(main_win, <span class="hljs-string">"Word"</span>);
+
+    wmove(main_win, <span class="hljs-number">4</span>, <span class="hljs-number">10</span>);
+    wprintw(main_win, word -&gt; text);
+
+    wmove(main_win, <span class="hljs-number">5</span>, <span class="hljs-number">10</span>);
+    wprintw(main_win, <span class="hljs-string">"Hint"</span>);
+
+    wmove(main_win, <span class="hljs-number">6</span>, <span class="hljs-number">10</span>);
+    wprintw(main_win, hint -&gt; text);
+
+    wmove(main_win, <span class="hljs-number">7</span>, <span class="hljs-number">10</span>);
+    wprintw(main_win, <span class="hljs-string">"Finish"</span>);
+
+    wmove(main_win, <span class="hljs-keyword">int</span>(q_input_stage * <span class="hljs-number">2</span> + <span class="hljs-number">1</span>), <span class="hljs-number">1</span>);
+    wprintw(main_win, <span class="hljs-string">"-&gt;"</span>);
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</div></code></pre>
+<h4 id="rstinputcpp">rst_input.cpp</h4>
+<pre><code class="language-cpp"><div><span class="hljs-comment">/**
+ * Function: rst_input
+ * Description: get user's restart or quit input after game end
+ * Parameter: key_val
+ * Return: 0: not decide, 1: decided
+*/</span>
+
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">"hanged_man.h"</span></span>
+
+<span class="hljs-keyword">int</span> hangedMan::rst_input(<span class="hljs-keyword">int</span> key_val) {
+    <span class="hljs-keyword">int</span> rt = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">switch</span> (key_val) {
+        <span class="hljs-keyword">case</span> <span class="hljs-number">9</span>:
+            restart += <span class="hljs-number">1</span>;
+            <span class="hljs-keyword">if</span> (restart &gt; <span class="hljs-number">1</span>) {
+                restart = <span class="hljs-number">0</span>;
+            }
+            rt = <span class="hljs-number">0</span>;
+            <span class="hljs-keyword">break</span>;
+        <span class="hljs-keyword">case</span> <span class="hljs-number">10</span>:
+            rt = <span class="hljs-number">1</span>;
+            <span class="hljs-keyword">break</span>;
+        <span class="hljs-keyword">default</span>:
+            rt = <span class="hljs-number">0</span>;
+            <span class="hljs-keyword">break</span>;
+    }
+
+    wclear(main_win);
+    wmove(main_win, <span class="hljs-keyword">int</span>(LINES / <span class="hljs-number">2</span>) + <span class="hljs-number">5</span>, <span class="hljs-keyword">int</span>(COLS / <span class="hljs-number">2</span>));
+    wprintw(main_win, <span class="hljs-string">"RESTART"</span>);
+    wmove(main_win, <span class="hljs-keyword">int</span>(LINES / <span class="hljs-number">2</span>) + <span class="hljs-number">6</span>, <span class="hljs-keyword">int</span>(COLS / <span class="hljs-number">2</span>));
+    wprintw(main_win, <span class="hljs-string">"QUIT"</span>);
+    wmove(main_win, <span class="hljs-keyword">int</span>(LINES / <span class="hljs-number">2</span>) + <span class="hljs-number">6</span> - restart, <span class="hljs-keyword">int</span>(COLS / <span class="hljs-number">2</span>) - <span class="hljs-number">5</span>);
+    wprintw(main_win, <span class="hljs-string">"--&gt;"</span>);
+    wrefresh(main_win);
+
+    <span class="hljs-keyword">return</span> rt;
+}
+</div></code></pre>
+<h4 id="drawmancpp">draw_man.cpp</h4>
+<pre><code class="language-cpp"><div><span class="hljs-comment">/**
+ * Function: draw_man
+ * Description: draw the man
+ * Parameter: None
+ * Return: None
+*/</span>
+
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">"hanged_man.h"</span></span>
+
+<span class="hljs-keyword">void</span> hangedMan::draw_man() {
+    wclear(man_win);
+    box(man_win, ACS_VLINE, ACS_HLINE);
+    <span class="hljs-comment">// wprintw(man_win, "%d", stroke);</span>
+    <span class="hljs-keyword">int</span> counter = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">if</span> (counter &gt;= stroke) {
+        wrefresh(man_win);
+        <span class="hljs-keyword">return</span>;
+    }
+
+    wmove(man_win, LINES - <span class="hljs-number">5</span>, <span class="hljs-number">5</span>);
+    whline(man_win, <span class="hljs-number">42</span>, <span class="hljs-number">10</span>);
+
+    counter += <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">if</span> (counter &gt;= stroke) {
+        wrefresh(man_win);
+        <span class="hljs-keyword">return</span>;
+    }
+    
+    wmove(man_win, <span class="hljs-number">5</span>, <span class="hljs-number">5</span>);
+    wvline(man_win, <span class="hljs-number">42</span>, (LINES - <span class="hljs-number">10</span>));
+
+    counter += <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">if</span> (counter &gt;= stroke) {
+        wrefresh(man_win);
+        <span class="hljs-keyword">return</span>;
+    }
+
+    whline(man_win, <span class="hljs-number">42</span>, <span class="hljs-number">8</span>);
+
+    counter += <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">if</span> (counter &gt;= stroke) {
+        wrefresh(man_win);
+        <span class="hljs-keyword">return</span>;
+    }
+
+    wmove(man_win, <span class="hljs-number">5</span>, <span class="hljs-number">13</span>);
+    wvline(man_win, <span class="hljs-number">42</span>, <span class="hljs-number">4</span>);
+
+    counter += <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">if</span> (counter &gt;= stroke) {
+        wrefresh(man_win);
+        <span class="hljs-keyword">return</span>;
+    }
+
+    wmove(man_win, <span class="hljs-number">7</span>, <span class="hljs-number">12</span>);
+    whline(man_win, <span class="hljs-number">42</span>, <span class="hljs-number">3</span>);
+    wvline(man_win, <span class="hljs-number">42</span>, <span class="hljs-number">3</span>);
+    wmove(man_win, <span class="hljs-number">9</span>, <span class="hljs-number">12</span>);
+    whline(man_win, <span class="hljs-number">42</span>, <span class="hljs-number">3</span>);
+    wmove(man_win, <span class="hljs-number">7</span>, <span class="hljs-number">14</span>);
+    wvline(man_win, <span class="hljs-number">42</span>, <span class="hljs-number">3</span>);
+
+
+    counter += <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">if</span> (counter &gt;= stroke) {
+        wrefresh(man_win);
+        <span class="hljs-keyword">return</span>;
+    }
+
+    wmove(man_win, <span class="hljs-number">8</span>, <span class="hljs-number">13</span>);
+    wvline(man_win, <span class="hljs-number">42</span>, <span class="hljs-number">4</span>);
+
+
+    counter += <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">if</span> (counter &gt;= stroke) {
+        wrefresh(man_win);
+        <span class="hljs-keyword">return</span>;
+    }
+    
+    wmove(man_win, <span class="hljs-number">10</span>, <span class="hljs-number">10</span>);
+    whline(man_win, <span class="hljs-number">42</span>, <span class="hljs-number">3</span>);
+
+    counter += <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">if</span> (counter &gt;= stroke) {
+        wrefresh(man_win);
+        <span class="hljs-keyword">return</span>;
+    }
+
+    wmove(man_win, <span class="hljs-number">10</span>, <span class="hljs-number">13</span>);
+    whline(man_win, <span class="hljs-number">42</span>, <span class="hljs-number">4</span>);
+
+    counter += <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">if</span> (counter &gt;= stroke) {
+        wrefresh(man_win);
+        <span class="hljs-keyword">return</span>;
+    }
+
+    wmove(man_win, <span class="hljs-number">12</span>, <span class="hljs-number">12</span>);
+    wvline(man_win, <span class="hljs-number">42</span>, <span class="hljs-number">2</span>);
+
+    counter += <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">if</span> (counter &gt;= stroke) {
+        wrefresh(man_win);
+        <span class="hljs-keyword">return</span>;
+    }
+
+    wmove(man_win, <span class="hljs-number">12</span>, <span class="hljs-number">14</span>);
+    wvline(man_win, <span class="hljs-number">42</span>, <span class="hljs-number">2</span>);
+    counter += <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">if</span> (counter &gt;= stroke) {
+        wrefresh(man_win);
+        <span class="hljs-keyword">return</span>;
+    }
+}
+</div></code></pre>
+<h4 id="wincpp">win.cpp</h4>
+<pre><code class="language-cpp"><div><span class="hljs-comment">/**
+ * Function: win
+ * Description: called after player2 win
+ * Parameter: None
+ * Return: None
+*/</span>
+
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">"hanged_man.h"</span></span>
+
+<span class="hljs-keyword">void</span> hangedMan::win() {
+    wclear(main_win);
+    wmove(main_win, <span class="hljs-keyword">int</span>(LINES / <span class="hljs-number">2</span>), <span class="hljs-keyword">int</span>(COLS / <span class="hljs-number">2</span>) - <span class="hljs-number">5</span>);
+    wprintw(main_win, <span class="hljs-string">"YOU WIN"</span>);
+    box(main_win, ACS_VLINE, ACS_HLINE);
+    wrefresh(main_win);
+}
+</div></code></pre>
+<h4 id="diecpp">die.cpp</h4>
+<pre><code class="language-cpp"><div><span class="hljs-comment">/**
+ * Function: die
+ * Description: what to do after die
+ * Parameter: None
+ * Return: None
+*/</span>
+
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">"hanged_man.h"</span></span>
+
+<span class="hljs-keyword">void</span> hangedMan::die() {
+    wclear(IO_win);
+    wmove(IO_win, <span class="hljs-keyword">int</span>(LINES / <span class="hljs-number">2</span>), <span class="hljs-keyword">int</span>(COLS / <span class="hljs-number">4</span>));
+    wprintw(IO_win, <span class="hljs-string">"YOU DIE!"</span>);
+    
+    stroke = <span class="hljs-number">5</span>;
+    draw_man();
+
+    wmove(man_win, <span class="hljs-number">13</span>, <span class="hljs-number">13</span>);
+    wvline(man_win, <span class="hljs-number">42</span>, <span class="hljs-number">4</span>);
+
+    
+    wmove(man_win, <span class="hljs-number">15</span>, <span class="hljs-number">10</span>);
+    whline(man_win, <span class="hljs-number">42</span>, <span class="hljs-number">3</span>);
+
+
+    wmove(man_win, <span class="hljs-number">15</span>, <span class="hljs-number">13</span>);
+    whline(man_win, <span class="hljs-number">42</span>, <span class="hljs-number">4</span>);
+
+
+    wmove(man_win, <span class="hljs-number">17</span>, <span class="hljs-number">12</span>);
+    wvline(man_win, <span class="hljs-number">42</span>, <span class="hljs-number">2</span>);
+
+    wmove(man_win, <span class="hljs-number">17</span>, <span class="hljs-number">14</span>);
+    wvline(man_win, <span class="hljs-number">42</span>, <span class="hljs-number">2</span>);
+    
+    box(IO_win, ACS_VLINE, ACS_HLINE);
+    wrefresh(man_win);
+    wrefresh(IO_win);
+}
+</div></code></pre>
+<h4 id="delcpp">del.cpp</h4>
+<pre><code class="language-cpp"><div><span class="hljs-comment">/**
+ * Function: del
+ * Description: free the allocated memory
+ * Parameter: None
+ * Return: None
+*/</span>
+
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">"hanged_man.h"</span></span>
+
+<span class="hljs-keyword">void</span> hangedMan::del() {
+    endwin();
+    free_str(word);
+    free_str(hint);
+    free_str(answer);
+}
+</div></code></pre>
+<h4 id="initfreestrcpp">init_free_str.cpp</h4>
+<pre><code class="language-cpp"><div><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">"hanged_man.h"</span></span>
+
+<span class="hljs-comment">/**
+ * Function: init_str
+ * Description: initizlize a string structure
+ * Parameter: string max length, initialize character
+ * Return: string* of the string.
+*/</span>
+<span class="hljs-built_in">string</span>* hangedMan::init_str(<span class="hljs-keyword">int</span> len, <span class="hljs-keyword">char</span> chr) {
+    <span class="hljs-built_in">string</span>* str;
+    str = (<span class="hljs-built_in">string</span>*)<span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(<span class="hljs-built_in">string</span>));
+    str -&gt; text = (<span class="hljs-keyword">char</span>*)<span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">char</span>) * len);
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; len; i++) {
+        *(str -&gt; text + i) = chr;
+    }
+    str -&gt; len = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">return</span> str;
+}
+
+<span class="hljs-comment">/**
+ * Function: free_str
+ * Description: free the string structure
+ * Parameter: string* string
+ * Return: None
+*/</span>
+<span class="hljs-keyword">void</span> hangedMan::free_str(<span class="hljs-built_in">string</span>* str) {
+    <span class="hljs-built_in">free</span>(str -&gt; text);
+    <span class="hljs-built_in">free</span>(str);
+}
+</div></code></pre>
+<h4 id="strcompcpp">strcomp.cpp</h4>
+<pre><code class="language-cpp"><div><span class="hljs-comment">/**
+ * Function: strcomp
+ * Description: use to compare two string which have same length
+ * Parameter: string1, string2, length
+ * Return: 0 not smae or 1 same
+*/</span>
+
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">"hanged_man.h"</span></span>
+
+<span class="hljs-keyword">int</span> hangedMan::strcomp(<span class="hljs-keyword">char</span>* s1, <span class="hljs-keyword">char</span>* s2, <span class="hljs-keyword">int</span> len) {
+    <span class="hljs-keyword">int</span> same = <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; len; i++) {
+        <span class="hljs-keyword">if</span> (*(s1 + i) != *(s2 + i)) {
+            same = <span class="hljs-number">0</span>;
+        }
+    }
+    <span class="hljs-keyword">return</span> same;
+}
+</div></code></pre>
+<h2 id="testing">Testing</h2>
+<p>We compile the C++ program with makefile</p>
+<pre><code class="language-makefile"><div><span class="hljs-section">main:</span>
+	g++ -o hanged_man.out main.cpp init.cpp run.cpp draw_man.cpp a_input.cpp q_input.cpp strcomp.cpp die.cpp win.cpp del.cpp rst_input.cpp init_free_str.cpp -l curses
+</div></code></pre>
+<p>in Mac OS X 10.15 with g++ version 4.2.1 and curses lib installed. We run it in terminal window of size 80 cols 24 rows.</p>
+<h4 id="player-1-input-hardness-word-and-hint">Player 1 input hardness, word, and hint</h4>
+<p><img src="file:////Users/eric/Documents/IB_inSchool/IB_CS/HL/hanged_man/test_1.jpg" alt=""></p>
+<h4 id="player-2-input-answer">Player 2 input answer</h4>
+<p><img src="file:////Users/eric/Documents/IB_inSchool/IB_CS/HL/hanged_man/test_2.jpg" alt=""></p>
+<h4 id="player-2-pass-away">Player 2 pass away</h4>
+<p><img src="file:////Users/eric/Documents/IB_inSchool/IB_CS/HL/hanged_man/test_3.jpg" alt=""></p>
+<h4 id="quit-or-restart">Quit or restart</h4>
+<p><img src="file:////Users/eric/Documents/IB_inSchool/IB_CS/HL/hanged_man/test_4.jpg" alt=""></p>
+<h4 id="player-2-survive">Player 2 survive</h4>
+<p><img src="file:////Users/eric/Documents/IB_inSchool/IB_CS/HL/hanged_man/test_5.jpg" alt=""></p>
+
+    </body>
+    </html>
