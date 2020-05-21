@@ -62,17 +62,17 @@ We used top-down design in our project. Here's the structure chart.
 
 ## Flowchart
 #### main
-
+![](flowchart/a_input.jpeg)
 #### init
-
+![](flowchart/initialize.jpeg)
 #### run
-
+![](flowchart/run.jpeg)
 #### q_input
-
+![](flowchart/q_input.jpeg)
 #### a_input
-
+![](flowchart/a_input.jpeg)
 #### draw_man
-
+![](flowchart/draw_man.jpeg)
 ## Pseudocode
 #### main
 ```
@@ -93,7 +93,7 @@ PROC initialize ()
     hint <- ""
     hardness <- 0
     stroke <- 0
-    answer <- "
+    answer <- ""
 ENDPROC
 ```
 #### run
@@ -937,16 +937,16 @@ main:
 in Mac OS X 10.15 with g++ version 4.2.1 and curses lib installed. We run it in terminal window of size 80 cols 24 rows.
 
 #### Player 1 input hardness, word, and hint
-![](test_1.jpg)
+![](testing/test_1.jpg)
 
 #### Player 2 input answer
-![](test_2.jpg)
+![](testing/test_2.jpg)
 
 #### Player 2 pass away
-![](test_3.jpg)
+![](testing/test_3.jpg)
 
 #### Quit or restart
-![](test_4.jpg)
+![](testing/test_4.jpg)
 
 #### Player 2 survive
-![](test_5.jpg)
+![](testing/test_5.jpg)

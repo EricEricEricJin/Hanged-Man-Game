@@ -9,5 +9,5 @@ PROC initialize ()
     hint <- ""
     hardness <- 0
     stroke <- 0
-    answer <- "
+    answer <- ""
 ENDPROC
