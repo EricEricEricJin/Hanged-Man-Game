@@ -937,7 +937,7 @@ main:
 in Mac OS X 10.15 with g++ version 4.2.1 and curses lib installed. We run it in terminal window of size 80 cols 24 rows.
 
 #### Player 1 input hardness, word, and hint
-![](test_1.jpg)
+![](https://github.com/EricEricEricJin/Hanged-Man-Game/blob/master/test_5.jpg?raw=true)
 
 #### Player 2 input answer
 ![](test_2.jpg)
