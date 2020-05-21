@@ -23,4 +23,4 @@ make
   - After fill the question, shift to tab “Finish” and press `return`
 - Player 2:
   - Press A...Z keys. If the char you pressed is in the word, all the chars in the word will appear; If the char you pressed is NOT in the word, one more stroke will be drawn on the man.
-  - If all charts filled, you win; If all strokes of the man drawn, you DIE.
+  - If all characters filled, you win; If all strokes of the man drawn, you DIE.
