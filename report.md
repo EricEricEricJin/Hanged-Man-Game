@@ -950,3 +950,4 @@ in Mac OS X 10.15 with g++ version 4.2.1 and curses lib installed. We run it in 
 
 #### Player 2 survive
 ![](testing/test_5.jpg)
+
