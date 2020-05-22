@@ -44,6 +44,7 @@ _By DP1-1 Rifile, Eric, Noel, Leo_
 Hanged Man is a game. One player enter the hardness, word, and hint, another player try characters and if the character he / she input is in the word, all same characters in the word would appear; if the character is NOT in the word, a stroke is added to a hanged man. When all the characters are tried out, player 2 win; when the hanged man are completely drawn, player 2 die.
 
 In our design, we set the relationship of hardness and uncomplete stroke as:
+
 | Hardness | # Uncomplete strokes |
 | --- | --- |
 | SIMPLE | 10 |
@@ -57,7 +58,7 @@ All the works of this project are uploaded to github repository [https://github.
 
 ## Structure
 We used top-down design in our project. Here's the structure chart.
-![structure_diagram](structure.png)
+![structure_diagram width = 1cm](structure.jpg)
 <!--Change to draw.io version later-->
 
 ## Flowchart
@@ -930,10 +931,12 @@ int hangedMan::strcomp(char* s1, char* s2, int len) {
 ## Testing
 
 We compile the C++ program with makefile
+
 ```makefile
 main:
 	g++ -o hanged_man.out main.cpp init.cpp run.cpp draw_man.cpp a_input.cpp q_input.cpp strcomp.cpp die.cpp win.cpp del.cpp rst_input.cpp init_free_str.cpp -l curses
 ```
+
 in Mac OS X 10.15 with g++ version 4.2.1 and curses lib installed. We run it in terminal window of size 80 cols 24 rows.
 
 #### Player 1 input hardness, word, and hint
