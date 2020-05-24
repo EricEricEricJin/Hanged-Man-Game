@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=latex 2020.1.11)  22 MAY 2020 10:35
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=latex 2020.1.11)  24 MAY 2020 16:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -157,18 +157,24 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
  [2]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 46.
+(Font)              <7> on input line 42.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 46.
+(Font)              <5> on input line 42.
 
-Overfull \hbox (54.99652pt too wide) in paragraph at lines 59--60
+Overfull \hbox (54.99652pt too wide) in paragraph at lines 42--43
 \OT1/cmtt/m/n/10 com / EricEricEricJin / Hanged-[]Man-[]Game . git ] (https : /
  / github . com / EricEricEricJin /
  []
 
 [3]
+! Extra }, or forgotten \endgroup.
+l.58                 \end{tabular}}
+                                   
+? s
+OK, entering \scrollmode...
+[4] [5]
 File: structure.eps Graphic file (type eps)
- <structure.eps> [4]
+ <structure.eps> [6]
 File: flowchart/main.eps Graphic file (type eps)
  <flowchart/main.eps>
 File: flowchart/initialize.eps Graphic file (type eps)
@@ -182,7 +188,7 @@ File: flowchart/a_input.eps Graphic file (type eps)
  <flowchart/a_input.eps>
 File: flowchart/draw_man.eps Graphic file (type eps)
 
-<flowchart/draw_man.eps> [5] [6] [7] [8] [9] [10]
+<flowchart/draw_man.eps> [7] [8] [9] [10] [11] [12]
 
 ! LaTeX Error: There's no line here to end.
 
@@ -190,17 +196,19 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.121 
+l.146 
       
-? s
-OK, entering \scrollmode...
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
 LaTeX Font Info:    Trying to load font information for OML+cmr on input line 1
-31.
+56.
 (/usr/local/texlive/2019/texmf-dist/tex/latex/base/omlcmr.fd
 File: omlcmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 131.
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 156.
 
 
 ! LaTeX Error: There's no line here to end.
@@ -209,7 +217,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.139 
+l.164 
       
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -222,7 +230,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.153 
+l.178 
       
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -235,13 +243,13 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.163 
+l.188 
       
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
-[11]
+[13]
 
 ! LaTeX Error: There's no line here to end.
 
@@ -249,22 +257,61 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.197 
+l.222 
       
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
-[12]
+[14]
 LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 2
-23.
+48.
  (/usr/local/texlive/2019/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 223.
- [13]
-[14] [15] (/usr/local/texlive/2019/texmf-dist/tex/latex/listings/lstlang1.sty
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 248.
+ [15]
+[16] [17]
+! Missing $ inserted.
+<inserted text> 
+                $
+l.384                     has_
+                              correct & BOOLEN & the character exist in the ...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Extra }, or forgotten $.
+<template> \unskip \hfil }
+                          \hskip \tabcolsep \hskip -.5\arrayrulewidth \vrule...
+l.384                     has_correct &
+                                        BOOLEN & the character exist in the ...
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.384                     has_correct &
+                                        BOOLEN & the character exist in the ...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.384                     has_correct &
+                                        BOOLEN & the character exist in the ...
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+[18] (/usr/local/texlive/2019/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2019/09/10 1.8c listings language file
 )
 (/usr/local/texlive/2019/texmf-dist/tex/latex/listings/lstlang2.sty
@@ -280,7 +327,7 @@ See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.348         \begin{lstlisting}[language={cpp}]
+l.393         \begin{lstlisting}[language={cpp}]
                                                 
 The following languages weren't loadable:
     ,cpp$
@@ -293,12 +340,12 @@ See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.348         \begin{lstlisting}[language={cpp}]
+l.393         \begin{lstlisting}[language={cpp}]
                                                 
 The language is not loadable. Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
-[16] (/usr/local/texlive/2019/texmf-dist/tex/latex/listings/lstlang1.sty
+[19] (/usr/local/texlive/2019/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2019/09/10 1.8c listings language file
 )
 (/usr/local/texlive/2019/texmf-dist/tex/latex/listings/lstlang2.sty
@@ -314,7 +361,7 @@ See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.406         \begin{lstlisting}[language={cpp}]
+l.451         \begin{lstlisting}[language={cpp}]
                                                 
 The following languages weren't loadable:
     ,cpp$
@@ -327,7 +374,7 @@ See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.406         \begin{lstlisting}[language={cpp}]
+l.451         \begin{lstlisting}[language={cpp}]
                                                 
 The language is not loadable. Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -348,7 +395,7 @@ See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.417         \begin{lstlisting}[language={cpp}]
+l.462         \begin{lstlisting}[language={cpp}]
                                                 
 The following languages weren't loadable:
     ,cpp$
@@ -361,7 +408,7 @@ See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.417         \begin{lstlisting}[language={cpp}]
+l.462         \begin{lstlisting}[language={cpp}]
                                                 
 The language is not loadable. Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -382,7 +429,7 @@ See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.437         \begin{lstlisting}[language={cpp}]
+l.482         \begin{lstlisting}[language={cpp}]
                                                 
 The following languages weren't loadable:
     ,cpp$
@@ -395,12 +442,12 @@ See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.437         \begin{lstlisting}[language={cpp}]
+l.482         \begin{lstlisting}[language={cpp}]
                                                 
 The language is not loadable. Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
-[17] [18] (/usr/local/texlive/2019/texmf-dist/tex/latex/listings/lstlang1.sty
+[20] [21] (/usr/local/texlive/2019/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2019/09/10 1.8c listings language file
 )
 (/usr/local/texlive/2019/texmf-dist/tex/latex/listings/lstlang2.sty
@@ -416,7 +463,7 @@ See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.522         \begin{lstlisting}[language={cpp}]
+l.567         \begin{lstlisting}[language={cpp}]
                                                 
 The following languages weren't loadable:
     ,cpp$
@@ -429,12 +476,12 @@ See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.522         \begin{lstlisting}[language={cpp}]
+l.567         \begin{lstlisting}[language={cpp}]
                                                 
 The language is not loadable. Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
-[19] [20] [21] [22]
+[22] [23] [24] [25]
 (/usr/local/texlive/2019/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2019/09/10 1.8c listings language file
 )
@@ -451,7 +498,7 @@ See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.681         \begin{lstlisting}[language={cpp}]
+l.726         \begin{lstlisting}[language={cpp}]
                                                 
 The following languages weren't loadable:
     ,cpp$
@@ -464,75 +511,7 @@ See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.681         \begin{lstlisting}[language={cpp}]
-                                                
-The language is not loadable. Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-[23] (/usr/local/texlive/2019/texmf-dist/tex/latex/listings/lstlang1.sty
-File: lstlang1.sty 2019/09/10 1.8c listings language file
-)
-(/usr/local/texlive/2019/texmf-dist/tex/latex/listings/lstlang2.sty
-File: lstlang2.sty 2019/09/10 1.8c listings language file
-)
-(/usr/local/texlive/2019/texmf-dist/tex/latex/listings/lstlang3.sty
-File: lstlang3.sty 2019/09/10 1.8c listings language file
-)
-
-! Package Listings Error: Couldn't load requested language.
-
-See the Listings package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.723         \begin{lstlisting}[language={cpp}]
-                                                
-The following languages weren't loadable:
-    ,cpp$
-This may cause errors in the sequel.
-
-
-! Package Listings Error: language cpp undefined.
-
-See the Listings package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.723         \begin{lstlisting}[language={cpp}]
-                                                
-The language is not loadable. Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-[24] [25] (/usr/local/texlive/2019/texmf-dist/tex/latex/listings/lstlang1.sty
-File: lstlang1.sty 2019/09/10 1.8c listings language file
-)
-(/usr/local/texlive/2019/texmf-dist/tex/latex/listings/lstlang2.sty
-File: lstlang2.sty 2019/09/10 1.8c listings language file
-)
-(/usr/local/texlive/2019/texmf-dist/tex/latex/listings/lstlang3.sty
-File: lstlang3.sty 2019/09/10 1.8c listings language file
-)
-
-! Package Listings Error: Couldn't load requested language.
-
-See the Listings package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.841         \begin{lstlisting}[language={cpp}]
-                                                
-The following languages weren't loadable:
-    ,cpp$
-This may cause errors in the sequel.
-
-
-! Package Listings Error: language cpp undefined.
-
-See the Listings package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.841         \begin{lstlisting}[language={cpp}]
+l.726         \begin{lstlisting}[language={cpp}]
                                                 
 The language is not loadable. Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -553,7 +532,7 @@ See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.861         \begin{lstlisting}[language={cpp}]
+l.768         \begin{lstlisting}[language={cpp}]
                                                 
 The following languages weren't loadable:
     ,cpp$
@@ -566,12 +545,12 @@ See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.861         \begin{lstlisting}[language={cpp}]
+l.768         \begin{lstlisting}[language={cpp}]
                                                 
 The language is not loadable. Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
-[27] (/usr/local/texlive/2019/texmf-dist/tex/latex/listings/lstlang1.sty
+[27] [28] (/usr/local/texlive/2019/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2019/09/10 1.8c listings language file
 )
 (/usr/local/texlive/2019/texmf-dist/tex/latex/listings/lstlang2.sty
@@ -587,7 +566,7 @@ See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.904         \begin{lstlisting}[language={cpp}]
+l.886         \begin{lstlisting}[language={cpp}]
                                                 
 The following languages weren't loadable:
     ,cpp$
@@ -600,7 +579,75 @@ See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.904         \begin{lstlisting}[language={cpp}]
+l.886         \begin{lstlisting}[language={cpp}]
+                                                
+The language is not loadable. Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[29] (/usr/local/texlive/2019/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2019/09/10 1.8c listings language file
+)
+(/usr/local/texlive/2019/texmf-dist/tex/latex/listings/lstlang2.sty
+File: lstlang2.sty 2019/09/10 1.8c listings language file
+)
+(/usr/local/texlive/2019/texmf-dist/tex/latex/listings/lstlang3.sty
+File: lstlang3.sty 2019/09/10 1.8c listings language file
+)
+
+! Package Listings Error: Couldn't load requested language.
+
+See the Listings package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.906         \begin{lstlisting}[language={cpp}]
+                                                
+The following languages weren't loadable:
+    ,cpp$
+This may cause errors in the sequel.
+
+
+! Package Listings Error: language cpp undefined.
+
+See the Listings package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.906         \begin{lstlisting}[language={cpp}]
+                                                
+The language is not loadable. Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[30] (/usr/local/texlive/2019/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2019/09/10 1.8c listings language file
+)
+(/usr/local/texlive/2019/texmf-dist/tex/latex/listings/lstlang2.sty
+File: lstlang2.sty 2019/09/10 1.8c listings language file
+)
+(/usr/local/texlive/2019/texmf-dist/tex/latex/listings/lstlang3.sty
+File: lstlang3.sty 2019/09/10 1.8c listings language file
+)
+
+! Package Listings Error: Couldn't load requested language.
+
+See the Listings package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.949         \begin{lstlisting}[language={cpp}]
+                                                
+The following languages weren't loadable:
+    ,cpp$
+This may cause errors in the sequel.
+
+
+! Package Listings Error: language cpp undefined.
+
+See the Listings package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.949         \begin{lstlisting}[language={cpp}]
                                                 
 The language is not loadable. Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -621,7 +668,7 @@ See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.923         \begin{lstlisting}[language={cpp}]
+l.968         \begin{lstlisting}[language={cpp}]
                                                 
 The following languages weren't loadable:
     ,cpp$
@@ -634,12 +681,12 @@ See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.923         \begin{lstlisting}[language={cpp}]
+l.968         \begin{lstlisting}[language={cpp}]
                                                 
 The language is not loadable. Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
-[28] (/usr/local/texlive/2019/texmf-dist/tex/latex/listings/lstlang1.sty
+[31] (/usr/local/texlive/2019/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2019/09/10 1.8c listings language file
 )
 (/usr/local/texlive/2019/texmf-dist/tex/latex/listings/lstlang2.sty
@@ -655,8 +702,8 @@ See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.956         \begin{lstlisting}[language={cpp}]
-                                                
+l.1001         \begin{lstlisting}[language={cpp}]
+                                                 
 The following languages weren't loadable:
     ,cpp$
 This may cause errors in the sequel.
@@ -668,13 +715,13 @@ See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.956         \begin{lstlisting}[language={cpp}]
-                                                
+l.1001         \begin{lstlisting}[language={cpp}]
+                                                 
 The language is not loadable. Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
-[29]
-Underfull \hbox (badness 10000) in paragraph at lines 982--983
+[32]
+Underfull \hbox (badness 10000) in paragraph at lines 1027--1028
 
  []
 
@@ -688,7 +735,7 @@ File: testing/test_4.eps Graphic file (type eps)
 
 <testing/test_4.eps>
 File: testing/test_5.eps Graphic file (type eps)
- <testing/test_5.eps> [30] [31] (./report.aux)
+ <testing/test_5.eps> [33] [34] (./report.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
@@ -696,10 +743,10 @@ LaTeX Warning: There were multiply-defined labels.
 Here is how much of TeX's memory you used:
  3107 strings out of 492164
  43927 string characters out of 6125332
- 421853 words of memory out of 5000000
+ 421849 words of memory out of 5000000
  7395 multiletter control sequences out of 15000+600000
  8055 words of font info for 29 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 30i,8n,39p,398b,1563s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 30i,9n,39p,398b,1563s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on report.dvi (31 pages, 393568 bytes).
+Output written on report.dvi (34 pages, 397220 bytes).

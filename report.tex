@@ -39,24 +39,49 @@
     \section{Introduction}
         Hanged Man is a game. One player enter the hardness, word, and hint, another player try characters and if the character he / she input is in the word, all same characters in the word would appear; if the character is NOT in the word, a stroke is added to a hanged man. When all the characters are tried out, player 2 win; when the hanged man are completely drawn, player 2 die.
 
-        In our design, we set the relationship of hardness and uncomplete stroke as:
-        
+        All the works of this project are uploaded to github repository \url{https://github.com/EricEricEricJin/Hanged-Man-Game.git](https://github.com/EricEricEricJin/Hanged-Man-Game.git}
+    
+    \newpage
+    \section{Task assigning}
         \begin{table}[h]
             \begin{center}
                 \begin{tabular}{|l|l|}
                     \hline
-                    Hardness & Number of uncompleted strokes \\ \hline
-                    SIMPLE & 10 \\ \hline
-                    MIDDLE & 9 \\ \hline
-                    HARD & 8 \\ \hline
-                \end{tabular}
+                    Task & Name \\ \hline
+                    Structure chart & Leo \\ \hline
+                    Flowchart & Rifile \\ \hline
+                    Pseudocode & Eric \\ \hline
+                    C++ implementation & Eric, Rifile \\ \hline
+                    
+                    Presentation & Rifile and Noel \\ \hline
+                    Document & Eric \\ \hline                    
+                \end{tabular}}
             \end{center}
         \end{table}
-        
-        We set the maximum number of characters of word is 20 \\
-        We set the maximum number of characters of hint is 100
-        
-        All the works of this project are uploaded to github repository \url{https://github.com/EricEricEricJin/Hanged-Man-Game.git](https://github.com/EricEricEricJin/Hanged-Man-Game.git}
+
+    \newpage
+
+    \section{Design choice}
+        \begin{enumerate}
+            \item \textbf{Hardness and lives}
+            Due to the relationship between 2 players is different, the probability for player 2 to think up the word is different. So we set three hardness in the game. Different hardness stands for different number of lives the player2 initially have, as shown in table below:
+            
+            \begin{table}[h]
+                \begin{center}
+                    \begin{tabular}{|l|l|}
+                        \hline
+                        Hardness & Initial lives \\ \hline
+                        SIMPLE & 10 \\ \hline
+                        MIDDLE & 9 \\ \hline
+                        HARD & 8 \\ \hline
+                    \end{tabular}
+                \end{center}
+            \end{table}
+
+            \item \textbf{Represent the hanged man}
+                In order to give player2 a better game experience, we draw the man with ascii characters. In this way, player2 can clearly know how many lives he / she still have.
+                
+        \end{enumerate}
 
     \newpage
 
@@ -342,7 +367,27 @@ ENDPROC
         \end{lstlisting}
     
     \newpage
+
+    \section{Identifier table}
+        \begin{table}[h]
+            \begin{center}
+                \begin{tabular}{|l|l|l|}
+                    \hline
+                    Name & Type & Description \\ \hline
+                    word & STRING & the word input by player 1 \\ \hline
+                    hint & STRING & hint input by player 1 offered to player 2 \\ \hline
+                    hardness & INTEGER & game hardness input by player 1 \\ \hline
+                    stroke & INTEGER & stroke of the hanged man \\ \hline
+                    answer & STRING & characters input by player 2 \\ \hline
+                    key & CHARACTER & key pressed by player 2 \\ \hline
+                    i & INTEGER & counter \\ \hline
+                    has_correct & BOOLEN & the character exist in the word or not \\ \hline
+                \end{tabular}
+            \end{center}
+            \caption{Identifier table}
+        \end{table}
     
+    \newpage
     \section{C++ implementation}
         \textbf{hanged\_man.h}
         \begin{lstlisting}[language={cpp}]
@@ -977,7 +1022,7 @@ int hangedMan::strcomp(char* s1, char* s2, int len) {
     \newpage
     \section{Testing of implementation}
         \textbf{Compile environment} \\
-        Mac OS X 10.5, g++ version 4.2.1, with curses lib installed
+        Mac OS X 10.15, g++ version 4.2.1, with curses lib installed
 
         \textbf{Makefile} \\
         \begin{lstlisting}
